@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Garante que padding e bordas não quebrem o tamanho das caixas */
+  font-family:
+    "Sora", sans-serif; /* Aplica a fonte moderna que importamos no HTML */
+}
+
+:root {
+  /* nossos 'design tokens' - as cores exatas das imagens */
+  --bg-principal: #03030c; /*preto azulado profundo do fundo */
+  --roxo-neon: #8a2be2; /* Roxo vibrante */
+  --ciano-neon: #00f0ff; /* Ciano/Azul claro */
+  --texto-claro: #ffffff; /* Branco para destaques */
+  --texto-mutado: #94a3b8; /* Cinza azulado para links normais */
+  --nav-bg: rgba(
+    3,
+    3,
+    12,
+    0.7
+  ); /* Fundo da navbar com transparência para o efeito de vidro */
+}
+
+body {
+  background-color: var(--bg-principal);
+  color: var(--texto-claro);
+  min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da tela */
+  overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+/* Estilização da barra de navegação */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Empurra o Logo para a esquerda, Menu para o centro e Botão para a direita */
+  align-items: center; /* Alinha verticalmente os vesticalmente ao centro*/
+  padding: 20px 6%; /* Espaçamento interno (cima/baixo/lados)*/
+  background-color: var(--nav-bg); /* Cor de fundo com transparência */
+  backdrop-filter: blur(
+    10px
+  ); /* Efeito de desfoque para o fundo da navbar (Glassmorphism)*/
+  -webkit-backdrop-filter: blur(12px); /* Compatibilidade com Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil na parte de baixo da navbar */
+  position: sticky; /* Mantém a navbar fixa no topo ao rolar a página */
+  top: 0; /* Posiciona a navbar no topo da página */
+  z-index: 1000; /* Garante que a navbar fique acima de outros elementos */
+}
+
+/* Estilização do logo */
+.logo {
+  font-size: 1.5rem; /* Tamanho da fonte do logo */
+  font-weight: 700; /* Negrito para destaque */
+  letter-spacing: 1px; /* Espaçamento entre letras para um efeito moderno */
+  color: var(--ciano-neon); /* Cor do logo */
+}
+
+/* O Logo <DEVCRAFT/> */
+.logo span {
+  font-size: 1.5rem; /* Tamanho da fonte do logo */
+  font-weight: 700; /* Negrito para destaque */
+  letter-spacing: 1px; /* Espaçamento entre letras para um efeito moderno */
+  color: var(--ciano-neon); /* Cor do logo */
+}
+
+.logo span {
+  color: var(--roxo-neon); /* Pinta a palavra CRAFT de roxo como na imagem */
+}
+
+/* Links de navegação */
+.menu ul {
+  display: flex; /* Exibe os links em linha */
+  gap: 32px; /* Espaçamento entre os links */
+  list-style: none; /* Remove os marcadores da lista (bolinhas pretas de lista)*/
+}
+
+.menu ul li a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: var(--texto-mutado); /* Cor dos links */
+  font-size: 0.95rem; /* Tamanho da fonte dos links */
+  font-weight: 400; /* Peso da fonte dos links */
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+/* Efeito Hover (Passar o mouse) e Link Ativo */
+.menu ul li a:hover,
+.menu ul li a.active {
+  color: var(--texto-claro);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Brilho leve no texto */
+}
+
+/* O Botão "Explorar" da Direita */
+.btn-explorar {
+  background: transparent; /* Fundo transparente */
+  color: var(--texto-claro);
+  border: 1px solid var(--roxo-neon); /* Borda roxa */
+  padding: 10px 24px; /* Espaçamento interno do botão */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 0.95rem; /* Tamanho da fonte do botão */
+  font-weight: 600; /* Peso da fonte do botão */
+  cursor: pointer; /* Cursor de mãozinha ao passar o mouse */
+  transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+  box-shadow: inset 0 0 0 rgba(138, 43, 226, 0); /* Estado inicial do brilho interno */
+}
+
+.btn-explorar:hover {
+  background-color: rgba(138, 43, 226, 0.1);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5); /* Efeito neon ao redor do botão */
+  border-color: var(--ciano-neon); /* Muda sutilmente a borda para ciano */
+}
+/* 3.ESTILIZAÇÃO DA HERO SECTION
+  ==========================================
+  */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 6% 120px 6%; /* Maior padding inferior para dar espaço aos cards */
+  background-image: url("src/images/fundo-foto");
+  /* <<< SUBSTÍTUIR PELO NOME DO SEU ARQUIVO */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+  align-items: center;
+  gap: 60px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- Lado Esquerdo: Texto --- */
+.hero-text-container h1 {
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--texto-claro);
+  margin: 20px 0;
+}
+
+.hero-text-container p {
+  font-size: 1.1rem;
+  color: var(--texto-mutado);
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.badge {
+  display: inline-block;
+  color: var(--roxo-neon);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* Botões da Hero */
+.btn-primary,
+.btn-secondary {
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--roxo-neon);
+  color: white;
+  border: none;
+  box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--texto-claro);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: white;
+}
+
+/* --- Lado Direito: Terminal --- */
+.glass-terminal {
+  background: rgba(10, 10, 25, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 450px;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dot.red {
+  background-color: #ff5f57;
+}
+.dot.yellow {
+  background-color: #febc2e;
+}
+.dot.green {
+  background-color: #28c840;
+}
+
+.terminal-header p {
+  color: var(--texto-mutado);
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.terminal-body {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Cores de sintaxe do Terminal */
+.terminal-body .keyword {
+  color: var(--roxo-neon);
+}
+.terminal-body .function {
+  color: var(--ciano-neon);
+}
+.terminal-body .variable {
+  color: var(--texto-claro);
+}
+.terminal-body .string {
+  color: #f2e7b5;
+}
+.terminal-body .property {
+  color: #aaa;
+}
+
+/* Botão de Modo Escuro */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  color: var(--texto-mutado);
+  font-size: 0.8rem;
+}
+
+.switch {
+  width: 50px;
+  height: 26px;
+  background-color: #1a1a30;
+  border-radius: 50px;
+  border: 2px solid #333;
+}
+
+/* ==========================================
+  4. ESTILIZAÇÃO DA GRID DE CARDS
+   ========================================== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas iguais */
+  gap: 24px;
+  max-width: 1300px;
+  margin: 100px auto 0 auto; /* Margin top para afastar do conteúdo hero */
+}
+
+.card-glass {
+  background: rgba(10, 10, 25, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.card-icon.cyan {
+  color: var(--ciano-neon);
+}
+.card-icon.purple {
+  color: var(--roxo-neon);
+}
+
+.card-glass h3 {
+  font-size: 1.3rem;
+  color: var(--texto-claro);
+  margin-bottom: 10px;
+}
+
+.card-glass p {
+  font-size: 0.9rem;
+  color: var(--texto-mutado);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.card-arrow {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--texto-mutado);
+  font-size: 1.2rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-glass:hover .card-arrow {
+  color: var(--texto-claro);
+  transform: translateX(5px);
+}
+
+/* Texto para rolar */
+.scroll-down {
+  text-align: center;
+  margin-top: 80px;
+  color: var(--texto-mutado);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
